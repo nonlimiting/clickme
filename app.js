@@ -34,6 +34,9 @@ app.use(function(req, res, next) {
 
 // db connecting
 mongoose.connect('mongodb://localhost/clickme');
+mongoose.connection.on('error', function (err) {
+	console.log('Mongoose connection error: ' + err);
+});
 
 // error handlers
 
