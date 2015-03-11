@@ -5,6 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
 
 var index = require('./routes/index');
 var login = require('./routes/login');
@@ -24,6 +26,20 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// session setting
+app.use(session({ 
+	secret: "clickme",
+	store: new MongoStore({ 
+        db: "session"
+    }),
+	cookie: {
+		maxAge: 60*1000*30
+    },
+    saveUninitialized: true,
+    resave: false
+}));
+
+// router setting
 app.use('/', index);
 app.use('/login', login);
 

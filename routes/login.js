@@ -5,8 +5,6 @@ var User = require('../models/user');
 
 var router = express.Router();
 
-
-
 /* GET login page */
 router.get('/', function(req, res, next) { 
 	res.render('login', {});
@@ -23,6 +21,11 @@ router.post('/', function(req, res, next) {
 		}
 		else { 
 			if(data != null) {
+				console.log(data);
+				req.session.user = { 
+					_id: data._id,
+					nickname: data.info.nickname
+				};
 				return res.redirect('/');
 			}
 			else { 
@@ -39,7 +42,6 @@ router.get('/reg', function(req, res, next) {
 
 /* POST register handle */
 router.post('/reg', function(req, res, next) { 
-
 	async.waterfall([
 		function(cb) { 
 			// check account is exist
