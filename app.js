@@ -40,8 +40,18 @@ app.use(session({
 }));
 
 // router setting
-app.use('/', index);
 app.use('/login', login);
+// is login handle
+app.use(function(req,res,next){
+	if(req.session.user == null) { 
+		res.redirect('/login');
+	}
+	else { 
+		next();
+	}
+});
+app.use('/', index);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
