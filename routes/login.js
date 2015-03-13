@@ -62,7 +62,6 @@ router.post('/reg', function(req, res, next) {
 		function(cb) { 
 			// check nickname is exist
 			User.findOne({ 'info.nickname': req.body.nickname }, function(err, data) { 
-				console.log(data);
 				if(err) {
 					return res.render('error', { message: '注册失败，请重试' });
 				}

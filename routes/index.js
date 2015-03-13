@@ -11,4 +11,5 @@ router.post('/logout', function(req, res, next) {
 	req.session = null;
 	res.redirect('/login');
 });
+
 module.exports = router;

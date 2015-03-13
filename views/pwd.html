@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>设置</title>
+	<link rel="stylesheet" type="text/css" href="http://cdn.amazeui.org/amazeui/2.2.1/css/amazeui.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/index.css">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="renderer" content="webkit">
+  	<meta http-equiv="Cache-Control" content="no-siteapp"/>
+  	<meta name="mobile-web-app-capable" content="yes">
+  	<!--[if lt IE 9]>
+	<script type="text/javascript">alert("sorry，low version of the browser does not support");</script>
+  	<![endif]-->
+</head>
+<body>
+	<div class="am-g">
+		<div class="am-topbar am-topbar-fixed-top am-topbar-inverse">
+			<div class="am-u-sm-12 am-u-md-10 am-u-lg-8 am-u-sm-centered">
+				<div class="am-u-sm-3">
+					<h1 class="am-topbar-brand">ClickMe</h1>
+				</div>
+				<div class="am-u-sm-9">
+					<a href="javascript:;" title="菜单" class="am-btn am-btn-primary am-btn-lg am-fr" data-am-offcanvas="{target: '#aside'}"><span class="am-icon-sm am-icon-bars"></span></a>
+					<a href="#" title="添加好友" class="am-btn am-btn-primary am-btn-lg am-fr"><span class="am-icon-sm am-icon-plus"></span></a>
+				</div>
+			</div>
+	  	</div>
+	</div>
+	<div id="aside" class="am-offcanvas">
+  		<div class="am-offcanvas-bar">
+    		<div class="am-offcanvas-content">
+    			<div class="am-u-lg-8 am-u-sm-6 am-u-sm-centered">
+      				<div><img class="am-circle" src="/img/avatar.jpg" /></div>
+      				<br>
+      			</div>
+      			<div class="am-u-sm-12 am-u-sm-centered am-text-center">
+      				<h2>我不是黄海滨</h2>
+      				<p class="am-text-xs">
+      					千万不要因为走得太久，而忘记了我们为什么出发
+      				</p>
+      			</div>
+      			<hr>
+    		</div>
+    		<div class="am-u-sm-12 am-u-sm-centered">
+      			<ul class="am-nav">
+      				<li><a class="am-text-lg am-text-primary am-icon-home" href="/">&nbsp;&nbsp;主页</a></li>
+  					<li><a class="am-text-lg am-text-success am-icon-user" href="/friends">&nbsp;&nbsp;联系人</a></li>
+  					<li><a class="am-text-lg am-text-danger am-icon-gear" href="/setting">&nbsp;&nbsp;设置</a></li>
+      			</ul>
+      		</div>
+      		<br>
+  		</div>
+	</div>
+	<div class="am-u-sm-12 am-u-md-8 am-u-lg-4 am-u-sm-centered">
+		<br>
+		<ul class="am-nav am-nav-tabs am-nav-justify">
+			<li><a href="/setting/">个人信息</a></li>
+		  	<li class="am-active"><a href="/setting/pwd">修改密码</a></li>
+		  	<li><a href="/setting/avatar">修改头像</a></li>
+		</ul>
+		<br><br>
+		<form action="" method="post" class="am-form" data-am-validator>
+			<div class="am-form-group">
+				<input type="password" name="oldpwd" placeholder="原密码" required pattern="^[A-Za-z0-9]+$" maxlength="20" minlength="5" class="am-form-field am-input-lg">
+			</div>
+			<div class="am-form-group">
+				<input type="password" id="newpwd" name="newpwd" placeholder="新密码" required pattern="^[A-Za-z0-9]+$" maxlength="20" minlength="5" class="am-form-field am-input-lg">
+			</div>
+			<div class="am-form-group">
+				<input type="password" name="chkpwd" placeholder="确认密码" required data-equal-to="#newpwd" class="am-form-field am-input-lg">
+			</div>
+			<div class="am-form-group">
+				<button class="am-btn am-btn-primary am-btn-lg am-btn-block am-round">确定</button>
+			</div>
+		</form>
+	</div>
+	<script type="text/javascript" src="http://cdn.staticfile.org/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="http://cdn.amazeui.org/amazeui/2.2.1/js/amazeui.min.js"></script>
+</body>
+</html>
