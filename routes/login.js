@@ -21,10 +21,10 @@ router.post('/', function(req, res, next) {
 		}
 		else { 
 			if(data != null) {
-				console.log(data);
 				req.session.user = { 
 					_id: data._id,
-					nickname: data.info.nickname
+					nickname: data.info.nickname,
+					intro: data.info.intro
 				};
 				return res.redirect('/');
 			}

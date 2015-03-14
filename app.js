@@ -44,7 +44,6 @@ app.use(session({
 // router setting
 app.use('/login', login);
 // is login handle
-/*
 app.use(function(req,res,next){
 	if(req.session.user == null) { 
 		res.redirect('/login');
@@ -53,7 +52,6 @@ app.use(function(req,res,next){
 		next();
 	}
 });
-*/
 app.use('/', index);
 app.use('/friends', friends);
 app.use('/setting', setting);

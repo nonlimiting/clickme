@@ -6,9 +6,9 @@ router.get('/', function(req, res, next) {
 	res.render('index', {});
 });
 
-/* POST logout */
-router.post('/logout', function(req, res, next) { 
-	req.session = null;
+/* GET logout */
+router.get('/logout', function(req, res, next) { 
+	req.session.user = null;
 	res.redirect('/login');
 });
 
