@@ -43,8 +43,9 @@ app.use(session({
 
 // router setting
 app.use('/login', login);
-// is login handle
+
 app.use(function(req,res,next){
+	// is login handle
 	if(req.session.user == null) { 
 		res.redirect('/login');
 	}

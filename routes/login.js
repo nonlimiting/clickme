@@ -24,7 +24,8 @@ router.post('/', function(req, res, next) {
 				req.session.user = { 
 					_id: data._id,
 					nickname: data.info.nickname,
-					intro: data.info.intro
+					intro: data.info.intro,
+					avatar: data.avatar
 				};
 				return res.redirect('/');
 			}

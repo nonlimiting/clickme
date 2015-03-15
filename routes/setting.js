@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var crypto = require('crypto');
+var formidable = require('formidable');
 var User = require('../models/user');
 
 /* GET set info page */
@@ -10,19 +11,19 @@ router.get('/', function(req, res, next) {
 			return res.render('error', { message: '系统出错，请重试' });
 		}
 		else { 
-			return res.render('setting', { info: data.info });
+			return res.render('setting', { info: data.info, user: req.session.user });
 		}
 	});
 });
 
 /* GET set pwd page */
 router.get('/pwd', function(req, res, next) { 
-	res.render('pwd', {});
+	res.render('pwd', { user: req.session.user });
 });
 
 /* GET set avatar page */
 router.get('/avatar', function(req, res, next) { 
-	res.render('avatar', {});
+	res.render('avatar', { user: req.session.user });
 });
 
 /* POST change info */
@@ -84,13 +85,43 @@ router.post('/pwd', function(req, res, next) {
 							return res.render('error', { message: '修改失败，请重试' });
 						}
 						else { 
-							return res.redirect('/setting/pwd');
+							return res.redirect('/logout');
 						}
 					});
 				}
 			}
 		}
 	});
+});
+
+/* POST change avatar */
+router.post('/avatar', function(req, res, next) { 
+	var form = new formidable.IncomingForm();
+	form.encoding = 'utf-8';
+	form.uploadDir = 'public/avatar/';
+	form.keepExtensions = true;
+    form.maxFieldsSize = 2 * 1024 * 1024;
+    form.parse(req, function(err, fields, files) { 
+    	if(err) {
+    		return res.render('error', { message: "上传失败，请重试" });
+    	}
+    	else { 
+    		var avatar = form.openedFiles[0].path;
+    		User.update({ _id:req.session.user._id }, { 
+				$set: { 
+					avatar: avatar
+				}
+			}, function(err) { 
+				if(err) { 
+					return res.render('error', { message: '修改失败，请重试' });
+				}
+				else { 
+					req.session.user.avatar = avatar.substr(6, avatar.length);
+					return res.redirect('/setting/avatar');
+				}
+			});
+    	}
+    });
 });
 
 module.exports = router;

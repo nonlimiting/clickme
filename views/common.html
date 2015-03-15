@@ -15,13 +15,13 @@
   		<div class="am-offcanvas-bar">
     		<div class="am-offcanvas-content">
     			<div class="am-u-lg-8 am-u-sm-6 am-u-sm-centered">
-      				<div><img class="am-circle" src="/img/avatar.jpg" /></div>
+      				<div><img class="am-circle" src="<%= user.avatar %>" /></div>
       				<br>
       			</div>
       			<div class="am-u-sm-12 am-u-sm-centered am-text-center">
-      				<h2>我不是黄海滨</h2>
+      				<h2><%= user.nickname %></h2>
       				<p class="am-text-xs">
-      					千万不要因为走得太久，而忘记了我们为什么出发
+      					<%= user.intro %>
       				</p>
       			</div>
       			<hr>

@@ -4,6 +4,10 @@ var mongoose = require('mongoose'),
 var UserSchema = new Schema({ 
 	account: String,
 	pwd: String,
+	avatar: { 
+		type: String,
+		default: '/img/avatar.jpg'
+	},
 	info: { 
 		nickname: String,
 		sex: Number,
