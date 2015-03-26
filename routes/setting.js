@@ -107,6 +107,7 @@ router.post('/avatar', function(req, res, next) {
     	}
     	else { 
     		var avatar = form.openedFiles[0].path;
+    		avatar = avatar.substr(6, avatar.length);
     		User.update({ _id:req.session.user._id }, { 
 				$set: { 
 					avatar: avatar
@@ -116,7 +117,7 @@ router.post('/avatar', function(req, res, next) {
 					return res.render('error', { message: '修改失败，请重试' });
 				}
 				else { 
-					req.session.user.avatar = avatar.substr(6, avatar.length);
+					req.session.user.avatar = avatar;
 					return res.redirect('/setting/avatar');
 				}
 			});

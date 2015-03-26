@@ -12,7 +12,8 @@ var UserSchema = new Schema({
 		nickname: String,
 		sex: Number,
 		intro: String
-	}
+	},
+	friends: [String]
 });
 
 module.exports = mongoose.model('User', UserSchema);
